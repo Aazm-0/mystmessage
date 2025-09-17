@@ -9,7 +9,8 @@ export async function POST(request: Request) {
         const { userName, code } = await request.json()
 
         const user = await User.findOne({userName})
-
+        console.log(code,userName);
+        
         if (!user) {
             return Response.json({
                 success: false,
