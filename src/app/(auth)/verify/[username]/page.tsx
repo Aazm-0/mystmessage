@@ -34,6 +34,8 @@ function page() {
             router.replace("/sign-in")
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>
+            
+            
             toast("Failure", {
                 description: axiosError.response?.data.message ?? "Error in getting code"
             })

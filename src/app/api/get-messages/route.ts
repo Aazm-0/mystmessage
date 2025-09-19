@@ -23,10 +23,10 @@ export async function GET(request: Request){
 
     try {
         const foundUser = await UserModel.aggregate([
-            {$match: {id: userId}},
+            {$match: {_id: userId}},
             {$unwind: '$messages'},
-            {$sort: {'$messages.createdAt': -1 }},
-            {$group: {_id: "$id", messages: {$push : "$messages"}}}
+            {$sort: {'messages.createdAt': -1 }},
+            {$group: {_id: "$_id", messages: {$push : "$messages"}}}
         ])
 
         // Remeber aggregation gives off an array
